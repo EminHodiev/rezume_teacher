@@ -2,25 +2,25 @@
 session_start();
 if (isset($_SESSION['logIn']) &&  $_SESSION['logIn'] =="1" )
 {
-    header("Location: index1.php");
+    header("Location: index.php");
 }
  if (isset($_POST['signIn']))
  {
     require_once('../config/db.php');
     $pass = $_POST['password'];
-    $login = $_POST['login'];
-    $query = "Select * from users where login='$login' and password=md5('$pass') limit 1;";
+    $email = $_POST['email'];
+    $query = "Select * from users where email='$email' and password=md5('$pass') limit 1;";
 
     $res = mysqli_query($con,$query);
     if (mysqli_num_rows($res)>0 )
     {
         $_SESSION['logIn'] = "1";
-        header("Location: index1.php");
+        header("Location: index.php");
     } else 
     {
         ?>
         <script>
-            alert("Логин или пароль недействителен");
+            alert("Login or pass is invalid");
         </script>
         <?php
     }
@@ -37,27 +37,27 @@ if (isset($_SESSION['logIn']) &&  $_SESSION['logIn'] =="1" )
 <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
 
 <!-- Bootstrap Core CSS -->
-<link href="assets1/css/bootstrap.css" rel='stylesheet' type='text/css' />
+<link href="assets/css/bootstrap.css" rel='stylesheet' type='text/css' />
 
 <!-- Custom CSS -->
-<link href="assets1/css/style.css" rel='stylesheet' type='text/css' />
+<link href="assets/css/style.css" rel='stylesheet' type='text/css' />
 
 <!-- font-awesome icons CSS-->
-<link href="assets1/css/font-awesome.css" rel="stylesheet"> 
+<link href="assets/css/font-awesome.css" rel="stylesheet"> 
 <!-- //font-awesome icons CSS-->
 
  <!-- side nav css file -->
- <link href='assets1/css/SidebarNav.min.css' media='all' rel='stylesheet' type='text/css'/>
+ <link href='assets/css/SidebarNav.min.css' media='all' rel='stylesheet' type='text/css'/>
  <!-- side nav css file -->
  
  <!-- js-->
-<script src="assets1/js/jquery-1.11.1.min.js"></script>
-<script src="assets1/js/modernizr.custom.js"></script>
+<script src="assets/js/jquery-1.11.1.min.js"></script>
+<script src="assets/js/modernizr.custom.js"></script>
  
 <!-- Metis Menu -->
-<script src="assets1/js/metisMenu.min.js"></script>
-<script src="assets1/js/custom.js"></script>
-<link href="assets1/css/custom.css" rel="stylesheet">
+<script src="assets/js/metisMenu.min.js"></script>
+<script src="assets/js/custom.js"></script>
+<link href="assets/css/custom.css" rel="stylesheet">
 <!--//Metis Menu -->
 
 </head> 
@@ -65,23 +65,24 @@ if (isset($_SESSION['logIn']) &&  $_SESSION['logIn'] =="1" )
 <div class="main-content">
 <div id="page-wrapper">
 			<div class="main-page login-page ">
-				<h2 class="title1">Вход</h2>
+				<h2 class="title1">Login</h2>
 				<div class="widget-shadow">
 					<div class="login-body">
 						<form action="" method="post">
-							<input type="email" class="user" name="login" placeholder="Enter Your Email" required="">
+							<input type="email" class="user" name="email" placeholder="Enter Your Email" required="">
 							<input type="password" name="password" class="lock" placeholder="Password" required="">
 							<div class="forgot-grid">
-								
+								<label class="checkbox"><input type="checkbox" name="checkbox" checked=""><i></i>Remember me</label>
 								<div class="forgot">
 									<a href="#">Забыли пароль?</a>
 								</div>
-								<div class="clearfix"></div>
+								<div class="clearfix"> </div>
 							</div>
-							<input type="submit" name="signIn" value="Войти">
+							<input type="submit" name="signIn" value="Sign In">
 							<div class="registration">
-								<a class="" href="registrate.php">
-								  Зарегистрироваться
+								Don't have an account ?
+								<a class="" href="signup.html">
+									Create an account
 								</a>
 							</div>
 						</form>
@@ -94,14 +95,14 @@ if (isset($_SESSION['logIn']) &&  $_SESSION['logIn'] =="1" )
 	 
 	
 	<!-- side nav js -->
-	<script src='assets1/js/SidebarNav.min.js' type='text/javascript'></script>
+	<script src='assets/js/SidebarNav.min.js' type='text/javascript'></script>
 	<script>
       $('.sidebar-menu').SidebarNav()
     </script>
 	<!-- //side nav js -->
 	
 	<!-- Classie --><!-- for toggle left push menu script -->
-		<script src="assets1/js/classie.js"></script>
+		<script src="assets/js/classie.js"></script>
 		<script>
 			var menuLeft = document.getElementById( 'cbp-spmenu-s1' ),
 				showLeftPush = document.getElementById( 'showLeftPush' ),
@@ -123,12 +124,12 @@ if (isset($_SESSION['logIn']) &&  $_SESSION['logIn'] =="1" )
 	<!-- //Classie --><!-- //for toggle left push menu script -->
 		
 	<!--scrolling js-->
-	<script src="assets1/js/jquery.nicescroll.js"></script>
-	<script src="assets1/js/scripts.js"></script>
+	<script src="assets/js/jquery.nicescroll.js"></script>
+	<script src="assets/js/scripts.js"></script>
 	<!--//scrolling js-->
 	
 	<!-- Bootstrap Core JavaScript -->
-   <script src="assets1/js/bootstrap.js"> </script>
+   <script src="assets/js/bootstrap.js"> </script>
 	<!-- //Bootstrap Core JavaScript -->
    
 </body>
